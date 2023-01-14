@@ -1,25 +1,42 @@
 import './App.css';
-import notes from './images/notes.png'
-import addNote from './images/add.png'
+import React from 'react'
 
+import {CreateNote} from './components/CreateNote'
+import {CounterNotes} from './components/CounterNotes'
+import {SearchNotes} from './components/SearchNotes'
+import {ListNotes} from './components/ListNotes'
+import { ItemNotes } from './components/ItemNotes';
+
+
+const notesList = [
+  {
+    id:1,
+    text: 'First note', 
+    completed: false
+  }
+];
 
 function App() {
   return (
-    <div className='noteBox'>
-      <div className='nav'>
-        <img src={notes} alt='logo notes'/>
-      </div>
     
-      <div className='addNoteBox'>
-      <div className='introduce'>
-        <p >Add your first note!</p>
-      </div>
-        <div className='addNote'>
-          <img src={addNote} alt='add notes'/>
+    <div className='generalBox'> 
+      <div className='boxNotes'>
+        <CreateNote></CreateNote>
+      </div>   
+        
+        <div className='boxNotes'>
+          <CounterNotes></CounterNotes>
+          <SearchNotes></SearchNotes>
+          <ListNotes>
+            {
+            notesList.map(note => (
+              <ItemNotes key= {note.id} text = {note.text}></ItemNotes>
+            ))
+            }
+          </ListNotes> 
         </div>
-      </div>
-     
-    </div>
+          
+    </div>  
   );
 }
 

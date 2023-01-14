@@ -1,56 +1,10 @@
-
-.noteBox{
-  height: 100vh;
-  width: 100%;
-  background-color: #FFFFFF;
-  
-
+.generalBox{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.nav{
-  background: #FFB900;
-  width: 100%;
-  height: 74px;
-
-}
-.nav img{
-  margin: 10px;
-  width: 70px;
-  height: 50px;
-}
-.addNoteBox{
-  display: flex;
-  height: 90vh;
-  width: 100%;
-  justify-content: right;
-  align-items: flex-end;
-  padding: 2rem;   
-  position: relative; 
-
-}
-.addNote{
-  display: flex;
-  justify-content: center;
-  padding: .5rem;
-  width: 50px;
-  height: 50px;
-  background-color: #FFB900;
-  border-radius: 50%;
-  
-}
-.introduce{
-  display: flex;
-  height: 100vh;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  position: absolute; 
-}
-.introduce p{   
-  position: absolute; 
-  font-family: 'Arial';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;  
-  color: rgba(0, 0, 0, 0.3);
+.boxNotes{
+    width: 50%;
+    
 }
