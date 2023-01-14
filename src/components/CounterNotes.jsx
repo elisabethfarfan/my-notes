@@ -2,6 +2,10 @@ import React from 'react'
 
 export const CounterNotes = () => {
   return (
-    <h2>Has completado 2 de 3 notas</h2>
+    <>
+      <h1>YOUR NOTES</h1>
+      <h5>Completado 2 de 3 notas</h5>
+    </>
+    
     )
 }

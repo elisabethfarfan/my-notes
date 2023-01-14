@@ -25,6 +25,7 @@ function App() {
       </div>   
         
         <div className='boxNotes'>
+          
           <CounterNotes></CounterNotes>
           <SearchNotes></SearchNotes>
           <ListNotes>

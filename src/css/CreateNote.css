@@ -1,16 +1,17 @@
 .createNote{
-    margin-top: 4rem;
-    margin-left: 6rem;
+    margin-top: 10%;
+    margin-left: 15%;
     width: 50%;
-    height: 80vh;
-    padding: 2rem;
-    box-shadow: 1px 5px 5px rgb(92, 91, 91);
+    height: 70vh;
+    padding: 1rem;
+    box-shadow: 1px 5px 5px rgb(56, 54, 54);
     border-radius: 10px;
-    border: 2px solid rgba(59, 57, 57, 0.322);
+    border: 2px solid rgba(59, 57, 57, 0.178);
+    background-color: rgb(255, 255, 255);
     
 }
 h2{
-    font-size: 30px;
+    font-size: 1.5em;
     margin-bottom: 2rem;
 }
 input{
@@ -41,7 +42,11 @@ button:hover{
     color: rgb(80, 78, 78);
 }
 .imgNote{
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.imgNote img{
+    width: 100%;
 }
