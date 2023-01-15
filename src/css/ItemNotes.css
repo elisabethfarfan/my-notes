@@ -35,4 +35,7 @@
     color: red;
     
  }
-  
+
+ .NoteItem-p--complete {
+    text-decoration: line-through;
+  }
