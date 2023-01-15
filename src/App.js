@@ -67,7 +67,7 @@ function App() {
           <ListNotes>
             {
             searchNotes.map(note => (
-              <ItemNotes key= {note.id} text = {note.text}></ItemNotes>
+              <ItemNotes key= {note.id} text = {note.text} completed={note.completed}></ItemNotes>
             ))
             }
           </ListNotes> 

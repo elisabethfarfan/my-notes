@@ -9,7 +9,11 @@
     display: flex;
 }
 .checkNote{
-    background-color: yellow;
+    background-color: rgba(206, 206, 182, 0.568);
+    cursor: pointer;
+}
+.checkNote:hover{
+
 }
 .textNote{
     width: 90%;
@@ -17,3 +21,18 @@
 .deleteNote{
     background-color: pink;
 }
+
+
+  .Icon-check--active {
+    color: #4caf50;
+  }
+
+  .Icon-delete {
+    color: #2d2e2d;
+    cursor: pointer; 
+  }
+  .Icon-delete:hover {
+    color: red;
+    
+ }
+  

@@ -4,9 +4,9 @@ export const ItemNotes = (props) => {
     
   return (
     <li className='liNote'>
-        <span className='checkNote'>✔</span>
+        <span className={`checkNote  ${props.completed && 'Icon-check--active'}`}>✔</span>
         <p className='textNote'>{props.text}</p>
-        <span className='deleteNote'>X</span>
+        <span className={`deleteNote ${props.completed && 'Icon-delete'}`}>X</span>
     </li>
   )
 }
