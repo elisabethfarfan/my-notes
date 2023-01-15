@@ -13,6 +13,16 @@ const notesList = [
     id:1,
     text: 'First note', 
     completed: false
+  },
+  {
+    id:2,
+    text: 'second note', 
+    completed: false
+  },
+  {
+    id:3,
+    text: 'three note', 
+    completed: false
   }
 ];
 
