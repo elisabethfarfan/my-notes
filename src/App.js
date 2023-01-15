@@ -1,30 +1,15 @@
 import './App.css';
 import React from 'react'
 
-import {CreateNote} from './components/CreateNote'
+import {CreateNote, arrNotes} from './components/CreateNote'
 import {CounterNotes} from './components/CounterNotes'
 import {SearchNotes} from './components/SearchNotes'
 import {ListNotes} from './components/ListNotes'
 import { ItemNotes } from './components/ItemNotes';
 
 
-const notesList = [
-  {
-    id:1,
-    text: 'First note', 
-    completed: false
-  },
-  {
-    id:2,
-    text: 'second note', 
-    completed: false
-  },
-  {
-    id:3,
-    text: 'three note', 
-    completed: false
-  }
-];
+const notesList = arrNotes;
+console.log(notesList);
 
 function App() {
   return (

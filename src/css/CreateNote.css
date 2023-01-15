@@ -48,5 +48,6 @@ button:hover{
     align-items: center;
 }
 .imgNote img{
-    width: 100%;
+    width: 90%;
+    height: 80%;
 }

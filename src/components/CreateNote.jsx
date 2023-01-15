@@ -3,25 +3,42 @@ import React from 'react'
 import post from '../images/descarga.jpg'
 import { useState } from 'react';
 
-export const CreateNote = () => {
-   const [note, setNote] = useState([]);
+export const arrNotes = [];
 
-   const saveNote = ()=>{
-      setNote(document.getElementById('notewrite').value);
+export const CreateNote = () => {
+   const [input, setInput] = useState('');
+
+
+   const handleNote = ({target})=>{
+    setInput(target.value);
    }
-   console.log(note);
+ 
+
+   const handleSubmit = (e) =>{
+    e.preventDefault();
+   }
+
+    const saveNote = ()=>{
+      arrNotes.push(input);
+      console.log(arrNotes);
+      setInput('')
+      
+    }
    return (
     <div className='createNote'>
-      <h2>Create new Note</h2>
-
-  
-        <label>
-          Note:
-          <input type="text" name="name" id='notewrite'/>
-        </label>
-        <button type="submit" value="Submit" onClick={() => saveNote()}>Enviar</button>
-      
-
+      <h2>Create new Note</h2> 
+      <form onSubmit={handleSubmit}> 
+        <label> Note: </label>
+            <input 
+              type="text" 
+              name="note" 
+              value={input} 
+              onChange={handleNote}
+              placeholder="Write note..."
+            />
+          
+          <button type="submit" value="Submit" onClick={saveNote}>Save</button>
+      </form>
       <div className='imgNote'>
         <img src={post} alt='img de post'></img>
       </div>
