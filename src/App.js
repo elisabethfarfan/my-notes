@@ -22,9 +22,8 @@ const notesListDefault = [
 {
   id:3,
   text:'tercera nota',
-  completed: true
+  completed: false
 }];
-console.log(notesListDefault);
 
 function App() {
   const [notesList, setNotesList] = useState(notesListDefault)
@@ -44,6 +43,22 @@ function App() {
     })
     
   }
+
+  const completeTheNote = (idNote)=>{
+      const noteIndex = notesList.findIndex(notes => notes.id === idNote);
+
+      const newNotes = [...notesList];
+      newNotes[noteIndex].completed = true;
+      setNotesList(newNotes);
+    }
+  
+    const deleteTheNote = (idNote)=>{
+      const noteIndex = notesList.findIndex(notes => notes.id === idNote);
+
+    const newNotes = [...notesList];
+      newNotes.splice(noteIndex, 1);
+      setNotesList(newNotes);
+    }
 
   return (
     
@@ -67,7 +82,15 @@ function App() {
           <ListNotes>
             {
             searchNotes.map(note => (
-              <ItemNotes key= {note.id} text = {note.text} completed={note.completed}></ItemNotes>
+              <ItemNotes 
+              key= {note.id} 
+              text = {note.text} 
+              completed={note.completed}
+              onCompleted = {() => completeTheNote(note.id)}
+              onDelete = {() => deleteTheNote(note.id)}
+              >
+
+              </ItemNotes>
             ))
             }
           </ListNotes> 
