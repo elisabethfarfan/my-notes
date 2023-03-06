@@ -1,102 +1,24 @@
+import logo from './logo.svg';
 import './App.css';
-import React, { useState } from 'react'
-
-import {CreateNote} from './components/CreateNote'
-import {CounterNotes} from './components/CounterNotes'
-import {SearchNotes} from './components/SearchNotes'
-import {ListNotes} from './components/ListNotes'
-import { ItemNotes } from './components/ItemNotes';
-
-
-const notesListDefault = [
-  {
-  id:1,
-  text:'primera nota',
-  completed: true
-},
-{
-  id:2,
-  text:'segunda nota',
-  completed: false
-},
-{
-  id:3,
-  text:'tercera nota',
-  completed: false
-}];
 
 function App() {
-  const [notesList, setNotesList] = useState(notesListDefault)
-  const [searchValue, setSearchValue] = useState('');
-
-  const completedNotes = notesList.filter(note => !!note.completed).length;
-  const totalNotes = notesList.length;
-
-  let searchNotes = [];
-  if(!searchValue.length>=1){
-      searchNotes = notesList;
-  }else{
-    searchNotes = notesList.filter(note =>{
-      const noteText = note.text.toLowerCase();
-      const searchText = searchValue.toLowerCase();
-      return noteText.includes(searchText);
-    })
-    
-  }
-
-  const completeTheNote = (idNote)=>{
-      const noteIndex = notesList.findIndex(notes => notes.id === idNote);
-
-      const newNotes = [...notesList];
-      newNotes[noteIndex].completed = true;
-      setNotesList(newNotes);
-    }
-  
-    const deleteTheNote = (idNote)=>{
-      const noteIndex = notesList.findIndex(notes => notes.id === idNote);
-
-    const newNotes = [...notesList];
-      newNotes.splice(noteIndex, 1);
-      setNotesList(newNotes);
-    }
-
   return (
-    
-    <div className='generalBox'> 
-      <div className='boxNotes'>
-        <CreateNote></CreateNote>
-      </div>   
-        
-        <div className='boxNotes'>
-          
-          <CounterNotes 
-            total = {totalNotes}
-            completed = {completedNotes}
-          ></CounterNotes>
-
-          <SearchNotes 
-            searchValue={searchValue} 
-            setSearchValue={setSearchValue}>
-
-          </SearchNotes>
-          <ListNotes>
-            {
-            searchNotes.map(note => (
-              <ItemNotes 
-              key= {note.id} 
-              text = {note.text} 
-              completed={note.completed}
-              onCompleted = {() => completeTheNote(note.id)}
-              onDelete = {() => deleteTheNote(note.id)}
-              >
-
-              </ItemNotes>
-            ))
-            }
-          </ListNotes> 
-        </div>
-          
-    </div>  
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
   );
 }
 
