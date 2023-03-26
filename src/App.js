@@ -6,22 +6,43 @@ import { NoteItem } from './NoteItem';
 import { NoteList } from './NoteList';
 import { NoteSearch } from './NoteSearch';
 
-const notes = [
+const notesDefault = [
   {text:'primera nota', completed:false},
-  {text:'segunda nota', completed:true},
+  {text:'segunda nota', completed:false},
   {text:'tercera nota', completed:false},
   
 ]
 function App() {
+  const [notes, setNotes] = React.useState(notesDefault);
+  const [searchValue, setSearchValue] = React.useState('');
 
+  const completedNotes = notes.filter((note) => !!note.completed).length
+  const notesTotal = notes.length
+
+  let  searchedNotes = [];
+  if(!searchValue.length>=1){
+    searchedNotes = notes
+  }else{
+      searchedNotes = notes.filter((note) => {
+        const notesText = note.text.toLocaleLowerCase()
+        const searchText = searchValue.toLocaleLowerCase()
+        return notesText.includes(searchText)
+     } )
+  }
   return (
     <React.Fragment>
-        <NoteCounter/>
+        <NoteCounter
+          completedTodos = {completedNotes}
+          notesTotal = {notesTotal}
+        />
       
-        <NoteSearch/>
+        <NoteSearch
+          searchValue = {searchValue}
+          setSearchValue = {setSearchValue}
+        />
   
         <NoteList>
-          {notes.map(note =>(
+          {searchedNotes.map(note =>(
                   <NoteItem 
                     key={note.text} 
                     text={note.text}
@@ -30,7 +51,7 @@ function App() {
           ))}
         </NoteList>
         <CreateNoteButton/>
-        <button>+</button>
+        {/* <button>+</button> */}
     </React.Fragment>
    
   );
