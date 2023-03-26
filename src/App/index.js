@@ -9,19 +9,33 @@ import {AppUI} from './AppUI'
 //   {text:'tercera nota', completed:false},
   
 // ]
+function useLocalStorage(itemName, initialValue){
+
+    const localStorageItem = localStorage.getItem(itemName)
+    let parseItem;
+
+    if(!localStorageItem){
+      localStorage.setItem(itemName, JSON.stringify(initialValue))
+      parseItem = []
+    }else{
+      parseItem = JSON.parse(localStorageItem)
+    }
+
+    const [item, setItem] = React.useState(parseItem);
+
+    const saveItem = (newItem) =>{
+      const stringifiedNotes = JSON.stringify(newItem)
+      localStorage.setItem(itemName, stringifiedNotes)
+      setItem(newItem)
+    }
+
+    return [item, saveItem]
+
+}
+
 function App() {
 
-  const localStorageNotes = localStorage.getItem('NOTES_V1')
-  let parseNotes;
-
-  if(!localStorageNotes){
-    localStorage.setItem('NOTES_V1', JSON.stringify([]))
-    parseNotes = []
-  }else{
-    parseNotes = JSON.parse(localStorageNotes)
-  }
-
-  const [notes, setNotes] = React.useState(parseNotes);
+  const [notes, saveNotes] = useLocalStorage('NOTES_V1', [])
   const [searchValue, setSearchValue] = React.useState('');
 
   const completedNotes = notes.filter((note) => !!note.completed).length
@@ -38,11 +52,7 @@ function App() {
      } )
   }
 
-  const saveNotes = (newNotes) =>{
-    const stringifiedNotes = JSON.stringify(newNotes)
-    localStorage.setItem('NOTES_V1', stringifiedNotes)
-    setNotes(newNotes)
-  }
+
 
   const completeNote = (text) =>{
     const indexText = notes.findIndex(note => note.text  === text)
