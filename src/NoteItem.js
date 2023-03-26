@@ -3,17 +3,10 @@ import './NoteItem.css';
 
 export const NoteItem = (props) => {
 
-  const onComplete = () =>{
-    alert(`La nota ${props.text} se ha completado`)
-  }
-
-  const onDelete = () =>{
-    alert(`La nota ${props.text} se ha eliminado`)
-  }
   return (
    <li className="NoteItem">
       <span 
-        onClick={onComplete}
+        onClick={props.onComplete}
         className={`Icon Icon-check ${props.complete && 'Icon-check--active'}`}> 
       ✔
       </span>
@@ -22,7 +15,7 @@ export const NoteItem = (props) => {
         {props.text}
       </p>
       <span 
-        onClick={onDelete}
+        onClick={props.onDelete}
         className="Icon Icon-delete">
         X
       </span>

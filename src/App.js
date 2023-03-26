@@ -8,7 +8,7 @@ import { NoteSearch } from './NoteSearch';
 
 const notesDefault = [
   {text:'primera nota', completed:false},
-  {text:'segunda nota', completed:false},
+  {text:'segunda nota', completed:true},
   {text:'tercera nota', completed:false},
   
 ]
@@ -29,10 +29,27 @@ function App() {
         return notesText.includes(searchText)
      } )
   }
+
+  const completeNote = (text) =>{
+    const indexText = notes.findIndex(note => note.text  === text)
+    const newNotes = [...notes];
+    newNotes[indexText].completed = true;
+    setNotes(newNotes)
+
+  }
+
+  const deleteNote = (text) =>{
+    const indexText = notes.findIndex(note => note.text  === text)
+    const newNotes = [...notes];
+    newNotes.splice(indexText, 1)
+    setNotes(newNotes)
+
+  }
+
   return (
     <React.Fragment>
         <NoteCounter
-          completedTodos = {completedNotes}
+          completedNotes = {completedNotes}
           notesTotal = {notesTotal}
         />
       
@@ -47,6 +64,8 @@ function App() {
                     key={note.text} 
                     text={note.text}
                     complete={note.completed}
+                    onComplete={() =>completeNote(note.text)}
+                    onDelete ={() => deleteNote(note.text)}
                   />
           ))}
         </NoteList>
