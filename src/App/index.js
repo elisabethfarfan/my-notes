@@ -1,10 +1,7 @@
 import React from 'react';
 import './App.css';
-import { CreateNoteButton } from './CreateNoteButton';
-import { NoteCounter } from './NoteCounter';
-import { NoteItem } from './NoteItem';
-import { NoteList } from './NoteList';
-import { NoteSearch } from './NoteSearch';
+
+import {AppUI} from './AppUI'
 
 const notesDefault = [
   {text:'primera nota', completed:false},
@@ -47,31 +44,17 @@ function App() {
   }
 
   return (
-    <React.Fragment>
-        <NoteCounter
-          completedNotes = {completedNotes}
-          notesTotal = {notesTotal}
-        />
-      
-        <NoteSearch
-          searchValue = {searchValue}
-          setSearchValue = {setSearchValue}
-        />
-  
-        <NoteList>
-          {searchedNotes.map(note =>(
-                  <NoteItem 
-                    key={note.text} 
-                    text={note.text}
-                    complete={note.completed}
-                    onComplete={() =>completeNote(note.text)}
-                    onDelete ={() => deleteNote(note.text)}
-                  />
-          ))}
-        </NoteList>
-        <CreateNoteButton/>
-        {/* <button>+</button> */}
-    </React.Fragment>
+   <AppUI
+      completedNotes = {completedNotes}
+      notesTotal = {notesTotal}
+      searchValue = {searchValue}
+      setSearchValue = {setSearchValue}
+      searchedNotes = { searchedNotes}
+
+
+      completeNote={completeNote}
+      deleteNote ={deleteNote}
+   />
    
   );
 }
