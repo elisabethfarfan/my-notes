@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './NoteSearch.css'
+import { NoteContext } from '../NoteContext';
 
-export const NoteSearch = ({searchValue, setSearchValue}) => {
- 
+export const NoteSearch = () => {
+  const {searchValue, setSearchValue} = useContext(NoteContext)
 
   const onSearchValueChange = (event) =>{
     setSearchValue(event.target.value);
-    console.log(event.target.value);
   }
   return (
 
