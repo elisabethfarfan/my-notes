@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {useLocalStorage} from './useLocalStorage'
 
 export const NoteContext = React.createContext()
@@ -6,6 +6,7 @@ export const NoteContext = React.createContext()
 
 export function NoteProvider(props){
 
+  const [openModal, setOpenModal] = useState(false)
     // renombramos los valores que recibimos desde el useLocalStorage
   const {item:notes, saveItem:saveNotes, loading, error} = useLocalStorage('NOTES_V1', [])
 
@@ -25,7 +26,14 @@ export function NoteProvider(props){
      } )
   }
 
-
+const addNote = (text) =>{
+  const newNotes = [...notes];
+    newNotes.push({
+      completed: false,
+      text:text
+    })
+    saveNotes(newNotes)
+}
 
   const completeNote = (text) =>{
     const indexText = notes.findIndex(note => note.text  === text)
@@ -53,8 +61,11 @@ export function NoteProvider(props){
             searchValue ,
             setSearchValue,
             searchedNotes,
+            addNote,
             completeNote,
             deleteNote,
+            openModal,
+            setOpenModal
            }}>
 
             {props.children}

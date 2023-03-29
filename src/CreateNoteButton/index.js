@@ -1,14 +1,14 @@
 import React from 'react';
 import './CreateNoteButton.css'
 
-export const CreateNoteButton = () => {
+export const CreateNoteButton = ({setOpenModal}) => {
   const onClickButton = () =>{
-    alert('click')
+    setOpenModal(prevState => !prevState)
   }
   return (
     <div 
       className='CreateNoteButton'
-      onClick={()=> onClickButton()}
+      onClick={onClickButton}
     >
       +
     </div>
